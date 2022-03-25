@@ -3,13 +3,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const port = 8080;
+const port = 3001;
 
 // ---------- CORS ----------
-var corsOptions = {
-  origin: "http://localhost:8081",
-};
-app.use(cors(corsOptions));
+app.use(cors());
 // ---------- CORS END ----------
 
 // ---------- BODY-PARSER ----------

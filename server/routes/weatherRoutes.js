@@ -1,19 +1,17 @@
-module.exports = app => {
-    const cities = require("../controllers/cityController")
-    const weatherApi = require("../services/weatherService")
-    const locationApi = require("../services/locationService")
+module.exports = (app) => {
+  const cities = require("../controllers/cityController");
+  const weatherApi = require("../services/weatherService");
+  const locationApi = require("../services/locationService");
 
-    var router = require("express").Router();
+  var router = require("express").Router();
 
-    router.get("/cities", cities.findAllCities)
-    router.get("/cities/:id", cities.findOne)
-    router.delete("/cities", cities.deleteAllCities)
+  router.get("/cities", cities.findAllCities);
+  router.delete("/deleteallcities", cities.deleteAllCities);
 
-    router.get("/weather/:cityName", weatherApi.getWeather)
-    router.get("/location/:cityName", locationApi.getLocation)
+  router.get("/weather", weatherApi.getWeather);
+  router.get("/location", locationApi.getLocation);
 
-    router.post("/city/:cityName", cities.createCity)
+  router.post("/createcity", cities.createCity);
 
-    app.use("/api", router)
-}
-
+  app.use("/api", router);
+};
