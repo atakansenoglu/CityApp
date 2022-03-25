@@ -1,29 +1,22 @@
 import "./App.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import CreateCity from "./pages/CreateCity";
+import DeleteAllCities from "./pages/DeleteAllCities";
 
 function App() {
-  const [cityList, setCityList] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/cities").then((response) => {
-      setCityList(response.data);
-    });
-  }, []);
   return (
     <div className="App">
-      {cityList.map((value, key) => {
-        return (
-          <div className="city">
-            <div className="cityName"> {value.cityName} </div>
-            <div className="body">{"Temperature: " + value.temperature}</div>
-            <div className="body">{"Feels Like: " + value.feelsLike}</div>
-            <div className="body">{"Longitude: " + value.longitude}</div>
-            <div className="body">{"Latitude: " + value.latitude}</div>
-            <div className="body">{"Created At: " + value.createdAt}</div>
-          </div>
-        );
-      })}
+      <Router>
+        <Link to="/">Home Page</Link>
+        <Link to="/createcity"> Create New City</Link>
+        <Link to="/deleteallcities"> Delete All Cities</Link>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/createcity" element={<CreateCity />} />
+          <Route path="/deleteallcities" element={<DeleteAllCities />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
