@@ -27,3 +27,4 @@ City App with MERN stack.
 - "/api/weather" gets weather information for requested city.
 - "/api/location" gets location information for requested city.
 - "/api/createcity" combines two API services and saves newly created city into database.
+
